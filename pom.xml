@@ -56,6 +56,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -78,5 +84,21 @@
             </plugin>
         </plugins>
     </build>
+
+
+    <repositories>
+        <repository>
+            <id>ea-nexus</id>
+            <url>http://10.92.1.10:8081/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>bytedance-snapshots</id>
+            <url>http://maven.byted.org/repository/snapshots</url>
+        </repository>
+        <repository>
+            <id>bytedance-releases</id>
+            <url>http://maven.byted.org/repository/releases</url>
+        </repository>
+    </repositories>
 
 </project>
