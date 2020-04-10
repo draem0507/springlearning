@@ -1,33 +1,34 @@
-package com.lwx.springlearning.eventdriver.event;
+package com.lwx.springlearning.eventdriver.annotation;
 
+import com.lwx.springlearning.eventdriver.event.UserRegisterEvent;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.EventListener;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
 /**
  * @author: liuwenxin
  * @date: 2020/4/9 5:27 下午
- * @desc: 消息监听服务 -->监听用户注册事件源
- * @see : {@link UserRegisterEvent}
+ * @desc: 日志监听服务 -->监听用户注册事件源
+ * @see : {@link com.lwx.springlearning.eventdriver.event.UserRegisterEvent}
  */
 @Component
 @Slf4j
-public class MessageListenerService implements ApplicationListener<UserRegisterEvent>, Ordered {
+public class LogAnnotationListenerService implements Ordered {
 
 
     @Override
     public int getOrder() {
-        return 2;
+        return 3;
     }
 
     public String notifyRegister(String name) {
 
-        log.info("start to notify user: " + name);
+        log.info("start to log user: " + name);
         return "success";
     }
 
-    @Override
+    @EventListener
     public void onApplicationEvent(UserRegisterEvent userRegisterEvent) {
 
         String name = (String) userRegisterEvent.getSource();

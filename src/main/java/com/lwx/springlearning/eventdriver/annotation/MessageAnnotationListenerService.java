@@ -1,7 +1,8 @@
-package com.lwx.springlearning.eventdriver.event;
+package com.lwx.springlearning.eventdriver.annotation;
 
+import com.lwx.springlearning.eventdriver.event.UserRegisterEvent;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.EventListener;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Slf4j
-public class MessageListenerService implements ApplicationListener<UserRegisterEvent>, Ordered {
+public class MessageAnnotationListenerService implements Ordered {
 
 
     @Override
@@ -27,7 +28,7 @@ public class MessageListenerService implements ApplicationListener<UserRegisterE
         return "success";
     }
 
-    @Override
+    @EventListener
     public void onApplicationEvent(UserRegisterEvent userRegisterEvent) {
 
         String name = (String) userRegisterEvent.getSource();

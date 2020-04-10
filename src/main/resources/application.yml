@@ -1,0 +1,9 @@
+
+
+server:
+  port: 8300
+  servlet:
+    context-path: /
+spring:
+  application:
+    name: springlearning
